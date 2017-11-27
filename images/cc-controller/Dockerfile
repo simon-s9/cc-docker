@@ -10,4 +10,4 @@ RUN cmon -v
 COPY cmon.cnf /etc/cmon.cnf
 EXPOSE 9500
 EXPOSE 9501
-CMD ["cmon", "--bind-addr=0.0.0.0"]
+CMD ["cmon", "-d", "--bind-addr=0.0.0.0"]
