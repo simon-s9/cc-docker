@@ -5,7 +5,7 @@ RUN wget --no-check-certificate https://severalnines.com/downloads/cmon/s9s-repo
 RUN wget --no-check-certificate http://repo.severalnines.com/severalnines-repos.asc -O- | apt-key add -
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends \
-    mysql \
+    mysql-client \
     clustercontrol-ui
 
 # Configure Apache
