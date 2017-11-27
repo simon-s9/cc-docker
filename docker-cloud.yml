@@ -1,13 +1,17 @@
-db:
-  image: ninescontrol/cc-db:latest
-  restart: always
 cmon:
-  image: ninescontrol/cc-controller:latest
+  image: 'ninescontrol/cc-controller:latest'
   links:
     - db
   restart: always
+db:
+  environment:
+    - MYSQL_ROOT_PASSWORD=bukashka
+  image: 'ninescontrol/cc-db:latest'
+  restart: always
 ui:
-  image: ninescontrol/cc-ui:latest
   expose:
-    - "80"
+    - '80:80'
+  image: 'ninescontrol/cc-ui:latest'
+  links:
+    - db
   restart: always
