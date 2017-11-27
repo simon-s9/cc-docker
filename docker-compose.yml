@@ -1,0 +1,50 @@
+version: "3"
+services:
+  db:
+    image: ninescontrol/cc-db:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3306:3306"
+    networks:
+      local:
+        ipv4_address: 172.20.128.1
+  cmon:
+    image: ninescontrol/cc-controller:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - "db"
+    ports:
+      - "9500:9500"
+      - "9501:9501"
+    networks:
+      local:
+        ipv4_address: 172.20.128.2
+  ui:
+    image: ninescontrol/cc-ui:latest
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - "db"
+      - "cmon"
+    ports:
+      - "80:80"
+    networks:
+      local:
+        ipv4_address: 172.20.128.3
+networks:
+  local:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.28.5.0/24
+  external:
+    internal: false
