@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )../images"
+root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../images"
 
 # Build and push container
 function build {
