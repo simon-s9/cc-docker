@@ -4,7 +4,9 @@ FROM ninescontrol/dap:latest
 RUN wget --no-check-certificate https://severalnines.com/downloads/cmon/s9s-repo-nightly.list -P /etc/apt/sources.list.d/
 RUN wget --no-check-certificate http://repo.severalnines.com/severalnines-repos.asc -O- | apt-key add -
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends clustercontrol-ui
+RUN apt-get install -y --no-install-recommends \
+    mysql \
+    clustercontrol-ui
 
 # Configure Apache
 RUN chown -R www-data:www-data /var/www
