@@ -9,8 +9,10 @@ db:
   image: 'ninescontrol/cc-db:latest'
   restart: always
 ui:
-  expose:
+  ports:
     - '80:80'
+  roles:
+    - global
   image: 'ninescontrol/cc-ui:latest'
   links:
     - db
