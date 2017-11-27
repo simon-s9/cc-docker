@@ -1,0 +1,13 @@
+db:
+  image: ninescontrol/cc-db:latest
+  restart: always
+cmon:
+  image: ninescontrol/cc-controller:latest
+  links:
+    - db
+  restart: always
+ui:
+  image: ninescontrol/cc-ui:latest
+  expose:
+    - "80"
+  restart: always
