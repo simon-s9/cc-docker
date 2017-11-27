@@ -16,4 +16,5 @@ ui:
   image: 'ninescontrol/cc-ui:latest'
   links:
     - db
+    - cmon
   restart: always

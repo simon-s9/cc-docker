@@ -2,10 +2,15 @@
 
 root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )../images"
 
+# Build and push container
+function build {
+	name=$(basename $1)
+	cd $1
+	echo "Building ninescontrol/$name:latest"
+	docker build -t ninescontrol/$name:latest .
+}
+
 for dir in ${root}/*/
 do
-	name=$(basename ${dir})
-	cd $dir
-	echo "Building $name:latest"
-	docker build -t $name:latest .
+	build $dir
 done
