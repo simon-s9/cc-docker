@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:jessie
 
 RUN apt-get update
 RUN apt-get -y install wget
